@@ -1,100 +1,87 @@
-import { MapPin } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { Reveal } from "../components/Reveal";
 
-// Approximate relative positions for a stylized, non-geographic map of the
-// Eastern Province + Riyadh, purely illustrative (not to scale).
+// Simplified, stylized Eastern Province map with an animated pulsing
+// marker over Dammam (our primary focus city).
 const CITY_POSITIONS: Record<string, { x: number; y: number }> = {
-  الدمام: { x: 68, y: 42 },
-  Dammam: { x: 68, y: 42 },
-  الخبر: { x: 74, y: 52 },
-  Khobar: { x: 74, y: 52 },
-  الظهران: { x: 70, y: 58 },
-  Dhahran: { x: 70, y: 58 },
-  القطيف: { x: 62, y: 28 },
-  Qatif: { x: 62, y: 28 },
-  الرياض: { x: 22, y: 70 },
-  Riyadh: { x: 22, y: 70 },
+  "الدمام": { x: 46, y: 40 },
+  Dammam: { x: 46, y: 40 },
+  "الخبر": { x: 50, y: 48 },
+  Khobar: { x: 50, y: 48 },
+  "الظهران": { x: 44, y: 52 },
+  Dhahran: { x: 44, y: 52 },
+  "القطيف": { x: 40, y: 28 },
+  Qatif: { x: 40, y: 28 },
+  "الجبيل": { x: 34, y: 12 },
+  Jubail: { x: 34, y: 12 },
+  "الأحساء": { x: 68, y: 72 },
+  "Al-Ahsa": { x: 68, y: 72 },
 };
 
 export function Coverage() {
   const { t } = useLanguage();
+  const primaryCity = t.coverage.cities[0];
 
   return (
-    <section id="coverage" className="section-pad bg-primary">
-      <div className="container-x grid items-center gap-14 lg:grid-cols-2">
+    <section id="coverage" className="section-pad bg-secondary-muted">
+      <div className="container-x grid items-center gap-12 md:grid-cols-2 md:gap-16">
         <Reveal>
-          <p className="eyebrow mb-3">{t.coverage.eyebrow}</p>
-          <div className="gold-line mb-5" />
-          <h2 className="font-heading text-3xl font-bold text-white sm:text-4xl">
+          <p className="eyebrow">{t.coverage.eyebrow}</p>
+          <h2 className="font-heading mt-3 text-3xl font-bold leading-snug text-primary md:text-4xl">
             {t.coverage.title}
           </h2>
-          <p className="mt-5 leading-relaxed text-white/60">{t.coverage.subtitle}</p>
+          <p className="mt-5 text-base leading-relaxed text-text-muted">{t.coverage.description}</p>
 
-          <ul className="mt-8 space-y-3">
+          <div className="mt-8 flex flex-wrap gap-2.5">
             {t.coverage.cities.map((city) => (
-              <li key={city.name} className="flex items-center gap-3">
-                <MapPin
-                  size={18}
-                  className={city.primary ? "text-accent" : "text-white/40"}
-                  fill={city.primary ? "currentColor" : "none"}
-                />
-                <span className={city.primary ? "font-semibold text-white" : "text-white/70"}>
-                  {city.name}
-                </span>
-                {city.primary && (
-                  <span className="rounded-full bg-accent/15 px-2.5 py-0.5 text-[0.65rem] font-semibold tracking-wide text-accent">
+              <span
+                key={city}
+                className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium ${
+                  city === primaryCity
+                    ? "border-accent bg-accent/10 text-accent-dark"
+                    : "border-primary/15 text-text-muted"
+                }`}
+              >
+                {city}
+                {city === primaryCity && (
+                  <span className="rounded-full bg-accent px-2 py-0.5 text-[0.6rem] font-semibold text-white">
                     {t.coverage.primaryFocusBadge}
                   </span>
                 )}
-              </li>
+              </span>
             ))}
-          </ul>
-
-          <p className="mt-6 text-xs leading-relaxed text-white/40">{t.coverage.note}</p>
+          </div>
         </Reveal>
 
-        <Reveal delay={0.15}>
-          <div className="relative aspect-square w-full overflow-hidden rounded-sm border border-white/10 bg-white/[0.03]">
+        <Reveal delay={0.1}>
+          <div className="relative aspect-square w-full max-w-md overflow-hidden rounded-sm border border-primary/10 bg-secondary mx-auto">
             <svg viewBox="0 0 100 100" className="h-full w-full">
-              <defs>
-                <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                  <path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="0.4" />
-                </pattern>
-              </defs>
-              <rect width="100" height="100" fill="url(#grid)" />
+              <rect x="0" y="0" width="100" height="100" fill="var(--color-secondary-muted)" />
               <path
-                d="M20,68 Q40,20 65,25 Q85,35 78,55 Q72,68 60,72 Q35,80 20,68 Z"
-                fill="rgba(201,169,98,0.06)"
-                stroke="rgba(201,169,98,0.25)"
+                d="M20 15 L75 10 L88 30 L80 65 L60 88 L25 82 L12 55 L18 30 Z"
+                fill="var(--color-secondary)"
+                stroke="var(--color-accent)"
+                strokeOpacity="0.3"
                 strokeWidth="0.6"
               />
               {t.coverage.cities.map((city) => {
-                const pos = CITY_POSITIONS[city.name] ?? { x: 50, y: 50 };
+                const pos = CITY_POSITIONS[city] ?? { x: 50, y: 50 };
+                const isPrimary = city === primaryCity;
                 return (
-                  <g key={city.name}>
+                  <g key={city}>
+                    {isPrimary && (
+                      <circle cx={pos.x} cy={pos.y} r="3" fill="var(--color-accent)" fillOpacity="0.25">
+                        <animate attributeName="r" values="3;7;3" dur="2.4s" repeatCount="indefinite" />
+                        <animate attributeName="fill-opacity" values="0.3;0;0.3" dur="2.4s" repeatCount="indefinite" />
+                      </circle>
+                    )}
                     <circle
                       cx={pos.x}
                       cy={pos.y}
-                      r={city.primary ? 2.6 : 1.6}
-                      fill={city.primary ? "#C9A962" : "rgba(255,255,255,0.5)"}
+                      r={isPrimary ? 2.2 : 1.4}
+                      fill={isPrimary ? "var(--color-accent)" : "var(--color-primary)"}
+                      fillOpacity={isPrimary ? 1 : 0.4}
                     />
-                    {city.primary && (
-                      <circle cx={pos.x} cy={pos.y} r="5" fill="none" stroke="#C9A962" strokeWidth="0.5">
-                        <animate attributeName="r" values="3;7;3" dur="2.5s" repeatCount="indefinite" />
-                        <animate attributeName="opacity" values="0.8;0;0.8" dur="2.5s" repeatCount="indefinite" />
-                      </circle>
-                    )}
-                    <text
-                      x={pos.x}
-                      y={pos.y - 4}
-                      fontSize="3.2"
-                      textAnchor="middle"
-                      fill={city.primary ? "#C9A962" : "rgba(255,255,255,0.55)"}
-                      fontFamily="Montserrat, sans-serif"
-                    >
-                      {city.name}
-                    </text>
                   </g>
                 );
               })}

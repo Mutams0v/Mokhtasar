@@ -1,8 +1,8 @@
-import { Users, Eye, ShieldCheck, Ruler, KeySquare, MapPinned } from "lucide-react";
+import { ShieldCheck, Users, Eye, CalendarCheck } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { Reveal } from "../components/Reveal";
 
-const ICONS = [Users, Eye, ShieldCheck, Ruler, KeySquare, MapPinned];
+const ICONS = [ShieldCheck, Users, Eye, CalendarCheck];
 
 export function WhyUs() {
   const { t } = useLanguage();
@@ -11,26 +11,19 @@ export function WhyUs() {
     <section id="why-us" className="section-pad bg-primary">
       <div className="container-x">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow mb-3 justify-center">{t.whyUs.eyebrow}</p>
-          <div className="gold-line mx-auto mb-5" />
-          <h2 className="font-heading text-3xl font-bold text-white sm:text-4xl">
-            {t.whyUs.title}
-          </h2>
+          <p className="eyebrow">{t.whyUs.eyebrow}</p>
+          <h2 className="font-heading mt-3 text-3xl font-bold text-white md:text-4xl">{t.whyUs.title}</h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-          {t.whyUs.items.map((item, i) => {
-            const Icon = ICONS[i];
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {t.whyUs.reasons.map((reason, i) => {
+            const Icon = ICONS[i % ICONS.length];
             return (
-              <Reveal key={item.title} delay={i * 0.07} className="flex gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
-                  <Icon size={20} strokeWidth={1.7} />
-                </div>
-                <div>
-                  <h3 className="font-heading text-base font-semibold text-white">
-                    {item.title}
-                  </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-white/55">{item.desc}</p>
+              <Reveal key={reason.title} delay={i * 0.08}>
+                <div className="h-full rounded-sm border border-white/10 p-7 transition-colors hover:border-accent/50">
+                  <Icon size={28} strokeWidth={1.6} className="text-accent" />
+                  <h3 className="font-heading mt-5 text-lg font-semibold text-white">{reason.title}</h3>
+                  <p className="mt-2.5 text-sm leading-relaxed text-white/60">{reason.description}</p>
                 </div>
               </Reveal>
             );

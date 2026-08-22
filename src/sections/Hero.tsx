@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { SmartImage } from "../components/SmartImage";
 import { images } from "../data/images";
@@ -21,69 +21,71 @@ export function Hero() {
       <div className="absolute inset-0">
         <SmartImage
           src={images.hero}
-          alt="Luxury villa interior"
-          label="Luxury Villa Interior"
-          className="h-full w-full object-cover"
+          alt="Mokhtasar Fit-Out"
+          className="h-full w-full object-cover opacity-50"
+          label="Hero"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/70 to-primary/40" />
-        <div className="absolute inset-0 bg-primary/30" />
       </div>
 
-      <div className="container-x relative z-10 pt-24 pb-20">
+      <div className="container-x relative z-10 pt-24 text-center">
         <motion.p
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="eyebrow mb-5"
+          transition={{ duration: 0.6 }}
+          className="eyebrow"
         >
           {t.hero.eyebrow}
         </motion.p>
-
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="max-w-3xl font-heading text-4xl font-bold leading-[1.15] text-white sm:text-5xl lg:text-6xl"
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="font-heading mx-auto mt-5 max-w-3xl text-4xl font-bold leading-tight text-white md:text-6xl"
         >
           {t.hero.title}
-          <span className="block text-accent">{t.hero.titleLine2}</span>
         </motion.h1>
-
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-6 max-w-xl text-lg leading-relaxed text-white/80"
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg"
         >
           {t.hero.subtitle}
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-10 flex flex-wrap gap-4"
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <button type="button" onClick={() => scrollTo("contact")} className="btn-primary">
             {t.hero.ctaPrimary}
             <Arrow size={18} />
           </button>
-          <button type="button" onClick={() => scrollTo("services")} className="btn-secondary">
+          <button type="button" onClick={() => scrollTo("products")} className="btn-secondary">
             {t.hero.ctaSecondary}
           </button>
         </motion.div>
-      </div>
 
-      <motion.button
-        type="button"
-        onClick={() => scrollTo("about")}
-        aria-label="Scroll down"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-        className="absolute bottom-8 start-1/2 z-10 -translate-x-1/2 text-white/70 hover:text-accent"
-      >
-        <ArrowDown size={22} />
-      </motion.button>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="mx-auto mt-16 flex max-w-md items-center justify-center gap-10 border-t border-white/15 pt-8"
+        >
+          <div>
+            <p className="font-heading text-3xl font-bold text-accent">{t.hero.badgeYears}</p>
+            <p className="mt-1 text-xs tracking-wide text-white/60">{t.hero.badgeYearsLabel}</p>
+          </div>
+          <div className="h-10 w-px bg-white/15" />
+          <div>
+            <p className="font-heading text-3xl font-bold text-accent">{t.hero.badgeProjects}</p>
+            <p className="mt-1 text-xs tracking-wide text-white/60">{t.hero.badgeProjectsLabel}</p>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }

@@ -12,6 +12,7 @@ const SECTION_IDS = [
   "process",
   "products",
   "why-us",
+  "faq",
   "audience",
   "coverage",
   "contact",
@@ -30,6 +31,7 @@ export function Header() {
     { id: "process", label: t.nav.process },
     { id: "products", label: t.nav.products },
     { id: "why-us", label: t.nav.whyUs },
+    { id: "faq", label: t.nav.faq },
     { id: "audience", label: t.nav.audience },
     { id: "coverage", label: t.nav.coverage },
     { id: "contact", label: t.nav.contact },
@@ -67,13 +69,13 @@ export function Header() {
         </button>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-7 lg:flex">
+        <nav className="hidden items-center gap-5 xl:flex">
           {navItems.map((item) => (
             <button
               key={item.id}
               type="button"
               onClick={() => handleNavClick(item.id)}
-              className={`relative text-sm font-medium transition-colors ${
+              className={`relative whitespace-nowrap text-sm font-medium transition-colors ${
                 isDark ? "text-primary/80 hover:text-accent" : "text-white/90 hover:text-white"
               } ${activeId === item.id ? (isDark ? "text-accent" : "text-white") : ""}`}
             >
@@ -85,7 +87,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-3 xl:flex">
           <LanguageSwitcher dark={isDark} />
           <button
             type="button"
@@ -97,7 +99,7 @@ export function Header() {
         </div>
 
         {/* Mobile toggle */}
-        <div className="flex items-center gap-3 lg:hidden">
+        <div className="flex items-center gap-3 xl:hidden">
           <LanguageSwitcher dark={isDark} />
           <button
             type="button"
@@ -112,7 +114,7 @@ export function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="border-t border-primary/10 bg-secondary lg:hidden">
+        <div className="max-h-[80vh] overflow-y-auto border-t border-primary/10 bg-secondary xl:hidden">
           <nav className="container-x flex flex-col gap-1 py-4">
             {navItems.map((item) => (
               <button

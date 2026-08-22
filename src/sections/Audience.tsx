@@ -1,41 +1,40 @@
-import { Crown, Building2, Hotel, TrendingUp } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { Reveal } from "../components/Reveal";
-
-const ICONS = [Crown, Building2, Hotel, TrendingUp];
+import { SmartImage } from "../components/SmartImage";
+import { images } from "../data/images";
 
 export function Audience() {
   const { t } = useLanguage();
 
   return (
-    <section id="audience" className="section-pad bg-secondary-muted">
-      <div className="container-x">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow mb-3 justify-center">{t.audience.eyebrow}</p>
-          <div className="gold-line mx-auto mb-5" />
-          <h2 className="font-heading text-3xl font-bold text-primary sm:text-4xl">
+    <section id="audience" className="section-pad bg-secondary">
+      <div className="container-x grid items-center gap-12 md:grid-cols-2 md:gap-16">
+        <Reveal>
+          <p className="eyebrow">{t.audience.eyebrow}</p>
+          <h2 className="font-heading mt-3 text-3xl font-bold leading-snug text-primary md:text-4xl">
             {t.audience.title}
           </h2>
+
+          <div className="mt-8 space-y-5">
+            {t.audience.segments.map((segment) => (
+              <div key={segment.title} className="border-s-2 border-accent ps-4">
+                <h3 className="font-heading text-base font-semibold text-primary">{segment.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-text-muted">{segment.description}</p>
+              </div>
+            ))}
+          </div>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {t.audience.items.map((item, i) => {
-            const Icon = ICONS[i];
-            return (
-              <Reveal key={item.title} delay={i * 0.08}>
-                <div className="h-full rounded-sm bg-secondary p-7 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-accent/30 text-accent">
-                    <Icon size={24} strokeWidth={1.6} />
-                  </div>
-                  <h3 className="mt-5 font-heading text-base font-semibold text-primary">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-text-muted">{item.desc}</p>
-                </div>
-              </Reveal>
-            );
-          })}
-        </div>
+        <Reveal delay={0.1}>
+          <div className="overflow-hidden rounded-sm">
+            <SmartImage
+              src={images.audience}
+              alt={t.audience.title}
+              className="h-[420px] w-full object-cover md:h-[480px]"
+              label="Audience"
+            />
+          </div>
+        </Reveal>
       </div>
     </section>
   );

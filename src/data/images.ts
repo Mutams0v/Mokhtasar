@@ -1,5 +1,5 @@
 // Centralized Unsplash placeholder images.
-// These are stand-ins only — replace with real project photography when available.
+// These are stand-ins only — replace with real project photos when available.
 // Each SmartImage gracefully falls back to an on-brand placeholder if a URL ever fails to load.
 
 const unsplash = (id: string, w = 1600, q = 80) =>
