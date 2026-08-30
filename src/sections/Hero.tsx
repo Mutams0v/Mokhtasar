@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
-import { SmartImage } from "../components/SmartImage";
-import { images } from "../data/images";
 
 export function Hero() {
   const { t, lang } = useLanguage();
@@ -19,29 +17,22 @@ export function Hero() {
   return (
     <section id="home" className="relative flex min-h-screen items-center overflow-hidden bg-primary">
       <div className="absolute inset-0">
-        <SmartImage
-          src={images.hero}
-          alt="Mokhtasar Fit-Out"
-          className="h-full w-full object-cover opacity-50"
-          label="Hero"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/70 to-primary/40" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-soft to-primary" />
+        <svg className="absolute inset-0 h-full w-full opacity-[0.05]" preserveAspectRatio="none">
+          <pattern id="hero-grid" width="42" height="42" patternUnits="userSpaceOnUse">
+            <path d="M42 0 L0 0 0 42" fill="none" stroke="var(--color-accent)" strokeWidth="1" />
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#hero-grid)" />
+        </svg>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,var(--color-primary)_85%)]" />
       </div>
 
       <div className="container-x relative z-10 pt-24 text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="eyebrow"
-        >
-          {t.hero.eyebrow}
-        </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-heading mx-auto mt-5 max-w-3xl text-4xl font-bold leading-tight text-white md:text-6xl"
+          className="font-heading mx-auto max-w-3xl text-4xl font-bold leading-tight text-white md:text-6xl"
         >
           {t.hero.title}
         </motion.h1>

@@ -1,6 +1,13 @@
 import { Phone, Mail, MapPin } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
-import { InstagramIcon, XIcon, LinkedInIcon } from "./SocialIcons";
+import { InstagramIcon, XIcon, TikTokIcon } from "./SocialIcons";
+import { site } from "../data/site";
+
+const SOCIAL_LINKS = [
+  { key: "instagram", href: site.instagram, label: "Instagram", Icon: InstagramIcon },
+  { key: "tiktok", href: site.tiktok, label: "TikTok", Icon: TikTokIcon },
+  { key: "x", href: site.x, label: "X (Twitter)", Icon: XIcon },
+].filter((link) => link.href);
 
 export function Footer() {
   const { t } = useLanguage();
@@ -33,29 +40,22 @@ export function Footer() {
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
             {t.footer.tagline}
           </p>
-          <div className="mt-5 flex gap-3">
-            <a
-              href="#"
-              aria-label="Instagram"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-accent hover:text-accent"
-            >
-              <InstagramIcon width={16} height={16} />
-            </a>
-            <a
-              href="#"
-              aria-label="X (Twitter)"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-accent hover:text-accent"
-            >
-              <XIcon width={16} height={16} />
-            </a>
-            <a
-              href="#"
-              aria-label="LinkedIn"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-accent hover:text-accent"
-            >
-              <LinkedInIcon width={16} height={16} />
-            </a>
-          </div>
+          {SOCIAL_LINKS.length > 0 && (
+            <div className="mt-5 flex gap-3">
+              {SOCIAL_LINKS.map(({ key, href, label, Icon }) => (
+                <a
+                  key={key}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-accent hover:text-accent"
+                >
+                  <Icon width={16} height={16} />
+                </a>
+              ))}
+            </div>
+          )}
         </div>
 
         <div>
@@ -84,11 +84,15 @@ export function Footer() {
           <ul className="space-y-3 text-sm text-white/60">
             <li className="flex items-start gap-2.5">
               <Phone size={16} className="mt-0.5 shrink-0 text-accent" />
-              <span>{t.contact.phonePlaceholderValue}</span>
+              <a href={`tel:+${site.whatsapp}`} className="transition-colors hover:text-white" dir="ltr">
+                {site.phoneDisplay}
+              </a>
             </li>
             <li className="flex items-start gap-2.5">
               <Mail size={16} className="mt-0.5 shrink-0 text-accent" />
-              <span>{t.contact.emailPlaceholderValue}</span>
+              <a href={`mailto:${site.email}`} className="transition-colors hover:text-white" dir="ltr">
+                {site.email}
+              </a>
             </li>
             <li className="flex items-start gap-2.5">
               <MapPin size={16} className="mt-0.5 shrink-0 text-accent" />

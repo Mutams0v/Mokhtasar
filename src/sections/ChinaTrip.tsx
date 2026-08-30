@@ -28,6 +28,10 @@ export function ChinaTrip() {
           </p>
         </Reveal>
 
+        <Reveal delay={0.1} className="mx-auto mt-8 max-w-2xl rounded-sm border-s-2 border-accent bg-white/5 p-6 text-start">
+          <p className="text-sm leading-relaxed text-white/80">{t.chinaTrip.note}</p>
+        </Reveal>
+
         <div className="mx-auto mt-14 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {t.chinaTrip.steps.map((step, i) => (
             <Reveal key={step.step} delay={i * 0.06}>

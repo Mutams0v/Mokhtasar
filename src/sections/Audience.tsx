@@ -1,7 +1,7 @@
+import { Users } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { Reveal } from "../components/Reveal";
-import { SmartImage } from "../components/SmartImage";
-import { images } from "../data/images";
+import { PlaceholderImage } from "../components/PlaceholderImage";
 
 export function Audience() {
   const { t } = useLanguage();
@@ -27,11 +27,10 @@ export function Audience() {
 
         <Reveal delay={0.1}>
           <div className="overflow-hidden rounded-sm">
-            <SmartImage
-              src={images.audience}
-              alt={t.audience.title}
-              className="h-[420px] w-full object-cover md:h-[480px]"
-              label="Audience"
+            <PlaceholderImage
+              icon={Users}
+              label={t.audience.eyebrow}
+              className="h-[420px] w-full md:h-[480px]"
             />
           </div>
         </Reveal>
