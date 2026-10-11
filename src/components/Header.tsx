@@ -5,18 +5,7 @@ import { useScrolled } from "../hooks/useScrolled";
 import { useScrollSpy } from "../hooks/useScrollSpy";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
-const SECTION_IDS = [
-  "home",
-  "about",
-  "services",
-  "process",
-  "products",
-  "why-us",
-  "faq",
-  "audience",
-  "coverage",
-  "contact",
-];
+const SECTION_IDS = ["home", "about", "specs", "how", "warranty", "library", "faq", "measure"];
 
 export function Header() {
   const { t } = useLanguage();
@@ -25,16 +14,12 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navItems: { id: string; label: string }[] = [
-    { id: "home", label: t.nav.home },
     { id: "about", label: t.nav.about },
-    { id: "services", label: t.nav.services },
-    { id: "process", label: t.nav.process },
-    { id: "products", label: t.nav.products },
-    { id: "why-us", label: t.nav.whyUs },
+    { id: "specs", label: t.nav.specs },
+    { id: "how", label: t.nav.howWeWork },
+    { id: "warranty", label: t.nav.warranty },
+    { id: "library", label: t.nav.library },
     { id: "faq", label: t.nav.faq },
-    { id: "audience", label: t.nav.audience },
-    { id: "coverage", label: t.nav.coverage },
-    { id: "contact", label: t.nav.contact },
   ];
 
   const handleNavClick = (id: string) => {
@@ -69,7 +54,7 @@ export function Header() {
         </button>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-5 xl:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {navItems.map((item) => (
             <button
               key={item.id}
@@ -87,11 +72,11 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 xl:flex">
+        <div className="hidden items-center gap-3 lg:flex">
           <LanguageSwitcher dark={isDark} />
           <button
             type="button"
-            onClick={() => handleNavClick("contact")}
+            onClick={() => handleNavClick("measure")}
             className="btn-primary text-sm"
           >
             {t.nav.cta}
@@ -99,7 +84,7 @@ export function Header() {
         </div>
 
         {/* Mobile toggle */}
-        <div className="flex items-center gap-3 xl:hidden">
+        <div className="flex items-center gap-3 lg:hidden">
           <LanguageSwitcher dark={isDark} />
           <button
             type="button"
@@ -114,7 +99,7 @@ export function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="max-h-[80vh] overflow-y-auto border-t border-primary/10 bg-secondary xl:hidden">
+        <div className="max-h-[80vh] overflow-y-auto border-t border-primary/10 bg-secondary lg:hidden">
           <nav className="container-x flex flex-col gap-1 py-4">
             {navItems.map((item) => (
               <button
@@ -130,7 +115,7 @@ export function Header() {
             ))}
             <button
               type="button"
-              onClick={() => handleNavClick("contact")}
+              onClick={() => handleNavClick("measure")}
               className="btn-primary mt-2 text-sm"
             >
               {t.nav.cta}

@@ -3,9 +3,10 @@ import { Search } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { Reveal } from "../components/Reveal";
 import { AccordionItem } from "../components/ui/Accordion";
+import { features } from "../data/site";
 
-type CategoryKey = "pricing" | "durability" | "shipping" | "execution" | "trust";
-const CATEGORY_ORDER: CategoryKey[] = ["pricing", "durability", "shipping", "execution", "trust"];
+type CategoryKey = "pricing" | "quality" | "trip" | "delivery";
+const CATEGORY_ORDER: CategoryKey[] = ["pricing", "quality", "trip", "delivery"];
 
 export function FAQ() {
   const { t } = useLanguage();
@@ -16,6 +17,7 @@ export function FAQ() {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return t.faq.items.filter((item) => {
+      if (item.id === "q4" && !features.shippingBreakageConfirmed) return false;
       const matchesCategory = activeCategory === "all" || item.categoryKey === activeCategory;
       const matchesQuery =
         !q || item.question.toLowerCase().includes(q) || item.answer.toLowerCase().includes(q);
@@ -29,8 +31,7 @@ export function FAQ() {
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">{t.faq.eyebrow}</p>
           <h2 className="font-heading mt-3 text-3xl font-bold text-primary md:text-4xl">{t.faq.title}</h2>
-          <p className="mt-4 text-base leading-relaxed text-text-muted">{t.faq.subtitle}</p>
-        </Reveal>
+                  </Reveal>
 
         <Reveal delay={0.1} className="mx-auto mt-10 max-w-xl">
           <div className="relative">
@@ -51,11 +52,11 @@ export function FAQ() {
             onClick={() => setActiveCategory("all")}
             className={`rounded-full border px-4 py-2 text-xs font-semibold tracking-wide transition-colors ${
               activeCategory === "all"
-                ? "border-accent bg-accent text-white"
+                ? "border-primary bg-primary text-white"
                 : "border-primary/15 text-text-muted hover:border-accent/50"
             }`}
           >
-            {t.faq.title}
+            {t.faq.allLabel}
           </button>
           {CATEGORY_ORDER.map((key) => (
             <button
@@ -64,7 +65,7 @@ export function FAQ() {
               onClick={() => setActiveCategory(key)}
               className={`rounded-full border px-4 py-2 text-xs font-semibold tracking-wide transition-colors ${
                 activeCategory === key
-                  ? "border-accent bg-accent text-white"
+                  ? "border-primary bg-primary text-white"
                   : "border-primary/15 text-text-muted hover:border-accent/50"
               }`}
             >
@@ -85,7 +86,7 @@ export function FAQ() {
             </Reveal>
           ))}
           {filtered.length === 0 && (
-            <p className="py-10 text-center text-sm text-text-muted">—</p>
+            <p className="py-10 text-center text-sm text-text-muted">{t.faq.empty}</p>
           )}
         </div>
       </div>

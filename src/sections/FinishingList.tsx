@@ -1,66 +1,62 @@
 import { useState } from "react";
 import {
-  DoorOpen,
   AppWindow,
-  Lock,
+  ChefHat,
+  DoorOpen,
   Droplets,
-  GlassWater,
-  LayoutGrid,
-  PaintBucket,
+  Fence,
   Layers,
-  Sparkles,
-  Package,
+  LayoutGrid,
+  Lightbulb,
+  Plug,
+  Sofa,
+  Sun,
 } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { Reveal } from "../components/Reveal";
 import { Modal } from "../components/ui/Modal";
 
 const ICONS: Record<string, typeof DoorOpen> = {
+  cabinetry: ChefHat,
   doors: DoorOpen,
   windows: AppWindow,
-  locks: Lock,
-  sanitary: Droplets,
-  "aluminum-glass": GlassWater,
+  skylight: Sun,
   flooring: LayoutGrid,
-  walls: PaintBucket,
-  ceilings: Layers,
-  accessories: Sparkles,
-  cabinetry: Package,
+  sanitary: Droplets,
+  electrical: Plug,
+  lighting: Lightbulb,
+  stairs: Layers,
+  outdoor: Fence,
+  furniture: Sofa,
 };
 
 export function FinishingList() {
   const { t } = useLanguage();
   const [activeId, setActiveId] = useState<string | null>(null);
-  const activeItem = t.finishingList.items.find((item) => item.id === activeId) ?? null;
+  const activeItem = t.finishing.items.find((item) => item.id === activeId) ?? null;
 
   return (
-    <section id="finishing-list" className="section-pad bg-secondary">
+    <section id="finishing" className="section-pad bg-secondary-muted">
       <div className="container-x">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow">{t.finishingList.eyebrow}</p>
-          <h2 className="font-heading mt-3 text-3xl font-bold text-primary md:text-4xl">
-            {t.finishingList.title}
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-text-muted">{t.finishingList.subtitle}</p>
+          <p className="eyebrow">{t.finishing.eyebrow}</p>
+          <h2 className="font-heading mt-3 text-3xl font-bold text-primary md:text-4xl">{t.finishing.title}</h2>
+          <p className="mt-4 text-base text-text-muted">{t.finishing.subtitle}</p>
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
-          {t.finishingList.items.map((item, i) => {
-            const Icon = ICONS[item.id] ?? Package;
+        <div className="mx-auto mt-12 flex max-w-4xl flex-wrap justify-center gap-3">
+          {t.finishing.items.map((item) => {
+            const Icon = ICONS[item.id] ?? DoorOpen;
             return (
-              <Reveal key={item.id} delay={(i % 5) * 0.06}>
-                <button
-                  type="button"
-                  onClick={() => setActiveId(item.id)}
-                  className="group relative flex h-full w-full flex-col items-center gap-3 overflow-hidden rounded-xl border border-[rgba(201,169,98,0.2)] bg-secondary p-6 text-center shadow-[0_4px_20px_rgba(26,26,26,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(26,26,26,0.1)]"
-                >
-                  <span className="absolute inset-x-0 top-0 h-[3px] scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100" />
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-white">
-                    <Icon size={24} strokeWidth={1.7} />
-                  </div>
-                  <h3 className="font-heading text-sm font-semibold text-primary">{item.title}</h3>
-                </button>
-              </Reveal>
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => setActiveId(item.id)}
+                className="flex items-center gap-2.5 rounded-full border border-primary/15 bg-secondary px-5 py-3 text-sm font-medium text-primary transition-colors hover:border-accent hover:text-accent-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+              >
+                <Icon size={18} strokeWidth={1.6} className="text-accent" />
+                {item.title}
+              </button>
             );
           })}
         </div>
@@ -68,17 +64,14 @@ export function FinishingList() {
 
       <Modal isOpen={!!activeItem} onClose={() => setActiveId(null)} title={activeItem?.title}>
         {activeItem && (
-          <div>
-            <p className="text-sm leading-relaxed text-text-muted">{activeItem.shortDesc}</p>
-            <ul className="mt-5 space-y-2.5">
-              {activeItem.details.map((detail) => (
-                <li key={detail} className="flex items-start gap-2.5 text-sm text-primary">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                  <span>{detail}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ul className="space-y-2.5">
+            {activeItem.details.map((detail) => (
+              <li key={detail} className="flex items-start gap-2.5 text-sm text-primary">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                <span>{detail}</span>
+              </li>
+            ))}
+          </ul>
         )}
       </Modal>
     </section>

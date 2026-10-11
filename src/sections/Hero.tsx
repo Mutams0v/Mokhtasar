@@ -1,18 +1,12 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
+import { scrollToId } from "../lib/scroll";
 
 export function Hero() {
   const { t, lang } = useLanguage();
   const Arrow = lang === "ar" ? ArrowLeft : ArrowRight;
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - 84;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-  };
 
   return (
     <section id="home" className="relative flex min-h-screen items-center overflow-hidden bg-primary">
@@ -51,11 +45,11 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <button type="button" onClick={() => scrollTo("contact")} className="btn-primary">
+          <button type="button" onClick={() => scrollToId("measure")} className="btn-primary">
             {t.hero.ctaPrimary}
             <Arrow size={18} />
           </button>
-          <button type="button" onClick={() => scrollTo("products")} className="btn-secondary">
+          <button type="button" onClick={() => scrollToId("specs")} className="btn-secondary">
             {t.hero.ctaSecondary}
           </button>
         </motion.div>

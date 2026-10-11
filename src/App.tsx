@@ -4,19 +4,17 @@ import { Footer } from "./components/Footer";
 import { WhatsAppButton } from "./components/WhatsAppButton";
 import { Hero } from "./sections/Hero";
 import { About } from "./sections/About";
-import { Services } from "./sections/Services";
+import { WhyChina } from "./sections/WhyChina";
+import { SpecCompare } from "./sections/SpecCompare";
+import { Paths } from "./sections/Paths";
 import { FinishingList } from "./sections/FinishingList";
-import { Process } from "./sections/Process";
-import { ChinaTrip } from "./sections/ChinaTrip";
-import { Products } from "./sections/Products";
+import { Warranty } from "./sections/Warranty";
 import { Projects } from "./sections/Projects";
-import { WhyUs } from "./sections/WhyUs";
-import { Commitments } from "./sections/Commitments";
-import { FAQ } from "./sections/FAQ";
 import { Testimonials } from "./sections/Testimonials";
 import { Audience } from "./sections/Audience";
-import { Coverage } from "./sections/Coverage";
-import { Contact } from "./sections/Contact";
+import { Library } from "./sections/Library";
+import { FAQ } from "./sections/FAQ";
+import { Measure } from "./sections/Measure";
 
 function App() {
   return (
@@ -25,19 +23,17 @@ function App() {
       <main>
         <Hero />
         <About />
-        <Audience />
-        <Services />
-        <Process />
-        <ChinaTrip />
+        <WhyChina />
+        <SpecCompare />
+        <Paths />
         <FinishingList />
-        <Products />
+        <Warranty />
         <Projects />
-        <WhyUs />
-        <Commitments />
         <Testimonials />
+        <Audience />
+        <Library />
         <FAQ />
-        <Coverage />
-        <Contact />
+        <Measure />
       </main>
       <Footer />
       <WhatsAppButton />

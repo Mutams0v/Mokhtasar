@@ -1,4 +1,7 @@
+import { useState } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { Modal } from "./ui/Modal";
+import { scrollToId } from "../lib/scroll";
 import { useLanguage } from "../i18n/LanguageContext";
 import { InstagramIcon, XIcon, TikTokIcon } from "./SocialIcons";
 import { site } from "../data/site";
@@ -12,19 +15,15 @@ const SOCIAL_LINKS = [
 export function Footer() {
   const { t } = useLanguage();
 
-  const handleNavClick = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - 84;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-  };
+  const [privacyOpen, setPrivacyOpen] = useState(false);
+  const handleNavClick = scrollToId;
 
   const quickLinks = [
-    { id: "home", label: t.nav.home },
     { id: "about", label: t.nav.about },
-    { id: "services", label: t.nav.services },
-    { id: "contact", label: t.nav.contact },
+    { id: "specs", label: t.nav.specs },
+    { id: "how", label: t.nav.howWeWork },
+    { id: "library", label: t.nav.library },
+    { id: "measure", label: t.nav.cta },
   ];
 
   return (
@@ -96,17 +95,39 @@ export function Footer() {
             </li>
             <li className="flex items-start gap-2.5">
               <MapPin size={16} className="mt-0.5 shrink-0 text-accent" />
-              <span>{t.contact.address}</span>
+              <span>{t.estimate.address}</span>
             </li>
           </ul>
         </div>
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-x flex flex-col items-center justify-center gap-2 py-5 text-center text-xs text-white/40">
+        <div className="container-x flex flex-col items-center justify-between gap-3 py-5 text-center text-xs text-white/40 sm:flex-row">
           <p>{t.footer.rights}</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
+            {site.cr && (
+              <span>
+                {t.trust.cr}: <span dir="ltr">{site.cr}</span>
+              </span>
+            )}
+            {site.vat && (
+              <span>
+                {t.trust.vat}: <span dir="ltr">{site.vat}</span>
+              </span>
+            )}
+            <button type="button" onClick={() => setPrivacyOpen(true)} className="underline-offset-4 hover:text-white hover:underline">
+              {t.footer.privacy}
+            </button>
+          </div>
         </div>
       </div>
+      <Modal isOpen={privacyOpen} onClose={() => setPrivacyOpen(false)} title={t.privacy.title}>
+        <div className="space-y-3 text-sm leading-loose text-primary/85">
+          {t.privacy.paragraphs.map((p) => (
+            <p key={p}>{p}</p>
+          ))}
+        </div>
+      </Modal>
     </footer>
   );
 }

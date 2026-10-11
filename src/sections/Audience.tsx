@@ -1,39 +1,25 @@
-import { Users } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { Reveal } from "../components/Reveal";
-import { PlaceholderImage } from "../components/PlaceholderImage";
 
 export function Audience() {
   const { t } = useLanguage();
 
   return (
-    <section id="audience" className="section-pad bg-secondary">
-      <div className="container-x grid items-center gap-12 md:grid-cols-2 md:gap-16">
+    <section id="audience" className="bg-primary py-14">
+      <div className="container-x grid items-center gap-8 md:grid-cols-[1fr_3fr]">
         <Reveal>
-          <p className="eyebrow">{t.audience.eyebrow}</p>
-          <h2 className="font-heading mt-3 text-3xl font-bold leading-snug text-primary md:text-4xl">
-            {t.audience.title}
-          </h2>
-
-          <div className="mt-8 space-y-5">
-            {t.audience.segments.map((segment) => (
-              <div key={segment.title} className="border-s-2 border-accent ps-4">
-                <h3 className="font-heading text-base font-semibold text-primary">{segment.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-text-muted">{segment.description}</p>
+          <h2 className="font-heading text-2xl font-bold text-white">{t.audience.title}</h2>
+        </Reveal>
+        <div className="grid gap-6 sm:grid-cols-3">
+          {t.audience.segments.map((segment) => (
+            <Reveal key={segment.title}>
+              <div className="border-s-2 border-accent ps-4">
+                <h3 className="font-heading text-base font-semibold text-white">{segment.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-white/60">{segment.description}</p>
               </div>
-            ))}
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.1}>
-          <div className="overflow-hidden rounded-sm">
-            <PlaceholderImage
-              icon={Users}
-              label={t.audience.eyebrow}
-              className="h-[420px] w-full md:h-[480px]"
-            />
-          </div>
-        </Reveal>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
