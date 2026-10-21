@@ -107,6 +107,19 @@ export function FinishingList() {
             ))}
           </ul>
         )}
+        {activeItem?.id === "furniture" && (
+          <button
+            type="button"
+            onClick={() => {
+              setActiveId(null);
+              window.dispatchEvent(new CustomEvent("mokhtasar:kind", { detail: "design" }));
+              scrollToId("measure");
+            }}
+            className="btn-primary mt-6 w-full justify-center"
+          >
+            {t.finishing.designCta}
+          </button>
+        )}
       </Modal>
     </section>
   );

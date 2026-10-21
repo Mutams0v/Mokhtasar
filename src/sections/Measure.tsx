@@ -2,6 +2,11 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   AlertCircle,
+  Armchair,
+  BedDouble,
+  Briefcase,
+  House,
+  UtensilsCrossed,
   AppWindow,
   Check,
   ChefHat,
@@ -35,11 +40,18 @@ const ITEM_ICONS: Record<string, typeof DoorOpen> = {
   lighting: Lightbulb,
   outdoor: Fence,
   furniture: Sofa,
+  living: Sofa,
+  majlis: Armchair,
+  bedrooms: BedDouble,
+  dining: UtensilsCrossed,
+  office: Briefcase,
+  whole: House,
 };
 
 const PHONE_RE = /^(\+?9665|05)\d{8}$|^\+?\d{8,14}$/;
 
 interface FormState {
+  kind: string;
   items: string[];
   city: string;
   property: string;
@@ -56,6 +68,7 @@ interface FormState {
 }
 
 const EMPTY: FormState = {
+  kind: "measure",
   items: [],
   city: "",
   property: "",
@@ -99,8 +112,17 @@ export function Measure() {
       const value = e.pathOptions[index];
       if (value) setForm((f) => ({ ...f, path: value }));
     };
+    const onKind = (ev: Event) => {
+      const kind = (ev as CustomEvent<string>).detail;
+      setForm((f) => ({ ...f, kind, items: [] }));
+      setStep(0);
+    };
     window.addEventListener("mokhtasar:path", onPath);
-    return () => window.removeEventListener("mokhtasar:path", onPath);
+    window.addEventListener("mokhtasar:kind", onKind);
+    return () => {
+      window.removeEventListener("mokhtasar:path", onPath);
+      window.removeEventListener("mokhtasar:kind", onKind);
+    };
   }, [e.pathOptions]);
 
   const update = <K extends keyof FormState>(field: K, value: FormState[K]) => {
@@ -116,7 +138,11 @@ export function Measure() {
     setErrors((er) => ({ ...er, items: undefined }));
   };
 
-  const itemLabel = (id: string) => e.items.find((i) => i.id === id)?.label ?? id;
+  const itemLabel = (id: string) =>
+    [...e.items, ...e.designSpaces].find((i) => i.id === id)?.label ?? id;
+  const isDesign = form.kind === "design";
+  const kindLabel = e.kinds.find((k) => k.id === form.kind)?.label ?? "";
+  const stepItems = isDesign ? e.designSpaces : e.items;
 
   const validateStep = (s: number): boolean => {
     const next: Errors = {};
@@ -171,9 +197,10 @@ export function Measure() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: site.formAccessKey,
-          subject: `طلب رفع مقاسات ${reference}`,
+          subject: `${isDesign ? "طلب تصميم واختيار أثاث" : "طلب رفع مقاسات"} ${reference}`,
           from_name: "موقع مختصر",
           رقم_الطلب: reference,
+          نوع_الطلب: isDesign ? "تصميم واختيار أثاث" : "رفع مقاسات وتشطيب",
           اللغة: lang,
           البنود: form.items.map(itemLabel).join("، "),
           المدينة: form.city,
@@ -199,6 +226,7 @@ export function Measure() {
   const summaryText = [
     e.whatsappIntro,
     ref ? `${e.whatsappRef}: ${ref}` : "",
+    `${e.kindLabel}: ${kindLabel}`,
     form.items.length ? `${e.whatsappItems}: ${form.items.map(itemLabel).join("، ")}` : "",
     form.city ? `${e.cityLabel}: ${form.city}` : "",
     form.name ? `${e.nameLabel}: ${form.name}` : "",
@@ -344,10 +372,30 @@ export function Measure() {
                     >
                       {step === 0 && (
                         <div>
-                          <h3 className="font-heading text-xl font-bold text-primary">{e.itemsTitle}</h3>
-                          <p className="mt-1 text-sm text-text-muted">{e.itemsHint}</p>
+                          <p className="text-xs font-semibold text-text-muted">{e.kindLabel}</p>
+                          <div role="radiogroup" aria-label={e.kindLabel} className="mt-2 mb-7 grid grid-cols-2 gap-2">
+                            {e.kinds.map((k) => {
+                              const on = form.kind === k.id;
+                              return (
+                                <button
+                                  key={k.id}
+                                  type="button"
+                                  role="radio"
+                                  aria-checked={on}
+                                  onClick={() => setForm((f) => (f.kind === k.id ? f : { ...f, kind: k.id, items: [] }))}
+                                  className={`border px-3 py-3 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${
+                                    on ? "border-accent bg-accent/15 text-primary" : "border-primary/12 bg-secondary text-text-muted hover:border-accent"
+                                  }`}
+                                >
+                                  {k.label}
+                                </button>
+                              );
+                            })}
+                          </div>
+                          <h3 className="font-heading text-xl font-bold text-primary">{isDesign ? e.designTitle : e.itemsTitle}</h3>
+                          <p className="mt-1 text-sm text-text-muted">{isDesign ? e.designHint : e.itemsHint}</p>
                           <div className="mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
-                            {e.items.map((item) => {
+                            {stepItems.map((item) => {
                               const Icon = ITEM_ICONS[item.id] ?? DoorOpen;
                               const on = form.items.includes(item.id);
                               return (
