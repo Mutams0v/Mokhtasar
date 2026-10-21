@@ -43,13 +43,17 @@ export function Header() {
         <button
           type="button"
           onClick={() => handleNavClick("home")}
-          className={`font-montserrat text-lg font-bold tracking-[0.15em] transition-colors ${
+          aria-label="Mokhtasar Fit-Out"
+          className={`flex items-center gap-3 font-montserrat text-lg font-bold tracking-[0.15em] transition-colors ${
             isDark ? "text-primary" : "text-white"
           }`}
         >
-          MOKHTASAR
-          <span className={`block text-[0.6rem] font-normal tracking-[0.25em] ${isDark ? "text-text-muted" : "text-white/70"}`}>
-            FIT-OUT
+          <img src="/brand/mark-gold.png" alt="" aria-hidden className="h-9 w-auto" />
+          <span className="text-start">
+            MOKHTASAR
+            <span className={`block text-[0.6rem] font-normal tracking-[0.25em] ${isDark ? "text-text-muted" : "text-white/70"}`}>
+              FIT-OUT
+            </span>
           </span>
         </button>
 

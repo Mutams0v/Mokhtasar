@@ -30,12 +30,7 @@ export function Footer() {
     <footer className="bg-primary text-secondary">
       <div className="container-x grid gap-10 py-16 md:grid-cols-4">
         <div>
-          <div className="font-montserrat text-lg font-bold tracking-[0.15em] text-white">
-            MOKHTASAR
-          </div>
-          <p className="mt-1 text-[0.65rem] tracking-[0.25em] text-white/50">
-            FIT-OUT
-          </p>
+          <img src="/brand/logo-ivory.png" alt="Mokhtasar Fit-Out" className="h-20 w-auto" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
             {t.footer.tagline}
           </p>
