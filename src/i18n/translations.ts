@@ -30,7 +30,7 @@ const ar = {
     badgeProjectsLabel: "مشروع منجز",
   },
   about: {
-    imageAlt: "صالة معيشة بتشطيب دافئ وإضاءة مخفية",
+    imageAlt: "صالة فاخرة بثريا كريستال وتفاصيل معدنية",
     eyebrow: "من نحن",
     title: "مواصفات أعلى من المعتاد في السوق",
     description:
@@ -426,7 +426,7 @@ const en: Translation = {
     badgeProjectsLabel: "Completed projects",
   },
   about: {
-    imageAlt: "A living room with a warm finish and concealed lighting",
+    imageAlt: "A luxury living room with a crystal chandelier and metal details",
     eyebrow: "About us",
     title: "A home deserves a higher spec than the market norm",
     description:

@@ -2,8 +2,8 @@ Image credits — Mokhtasar website
 All images: Unsplash License (https://unsplash.com/license). Free for commercial use; attribution not required.
 Illustrative only. Not Mokhtasar projects.
 
-hero.webp | https://images.unsplash.com/photo-1780257562941-d9a6923befa1 | POOJAN THANEKAR
-about.webp | https://images.unsplash.com/photo-1704040686510-b747ff423ebb | Ariel Domenden
+hero.webp | https://images.unsplash.com/photo-1758448755778-90ebf4d0f1e7 | Aalo Lens
+about.webp | https://images.unsplash.com/photo-1670244208393-bd46e800340e | mahmoud azmy
 why-china.webp | https://images.unsplash.com/photo-1771926343582-225257874d19 | Sacha Canivet
 spec-windows.webp | https://images.unsplash.com/photo-1724582586529-62622e50c0b3 | Prydumano Design
 spec-doors.webp | https://images.unsplash.com/photo-1513492503952-08111373606b | Paul Hanaoka
