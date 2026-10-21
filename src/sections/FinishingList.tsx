@@ -17,6 +17,7 @@ import { Reveal } from "../components/Reveal";
 import { Modal } from "../components/ui/Modal";
 import { SmartImage } from "../components/SmartImage";
 import { images } from "../data/images";
+import { scrollToId } from "../lib/scroll";
 
 const ICONS: Record<string, typeof DoorOpen> = {
   cabinetry: ChefHat,
@@ -46,34 +47,45 @@ export function FinishingList() {
           <p className="mt-4 text-base text-text-muted">{t.finishing.subtitle}</p>
         </Reveal>
 
-        <Reveal delay={0.08}>
-          <div className="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-2 sm:grid-cols-4">
-            {images.finishing.map((src, i) => (
-              <SmartImage
-                key={src}
-                src={src}
-                alt=""
-                className={`aspect-[3/4] w-full rounded-sm object-cover ${i > 1 ? "hidden sm:block" : ""}`}
-              />
-            ))}
-          </div>
-        </Reveal>
-
-        <div className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-3">
-          {t.finishing.items.map((item) => {
+        <div className="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 md:gap-4">
+          {t.finishing.items.map((item, i) => {
             const Icon = ICONS[item.id] ?? DoorOpen;
             return (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => setActiveId(item.id)}
-                className="flex items-center gap-2.5 rounded-full border border-primary/15 bg-secondary px-5 py-3 text-sm font-medium text-primary transition-colors hover:border-accent hover:text-accent-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
-              >
-                <Icon size={18} strokeWidth={1.6} className="text-accent" />
-                {item.title}
-              </button>
+              <Reveal key={item.id} delay={Math.min(i, 6) * 0.04}>
+                <button
+                  type="button"
+                  onClick={() => setActiveId(item.id)}
+                  className="group block w-full overflow-hidden rounded-sm border border-primary/10 bg-secondary text-start transition-colors hover:border-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+                >
+                  <div className="aspect-[4/3] overflow-hidden bg-secondary-muted">
+                    {images.finishing[item.id] && (
+                      <SmartImage
+                        src={images.finishing[item.id]}
+                        alt={item.title}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                      />
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2 px-3 py-3 md:px-4">
+                    <Icon size={16} strokeWidth={1.6} className="shrink-0 text-accent" />
+                    <span className="text-sm font-semibold text-primary transition-colors group-hover:text-accent-dark">
+                      {item.title}
+                    </span>
+                  </div>
+                </button>
+              </Reveal>
             );
           })}
+          <Reveal delay={0.24}>
+            <button
+              type="button"
+              onClick={() => scrollToId("measure")}
+              className="flex h-full min-h-[10rem] w-full flex-col justify-end rounded-sm bg-primary p-4 text-start transition-colors hover:bg-primary-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent md:p-5"
+            >
+              <span className="font-heading text-lg font-bold text-white">{t.finishing.askTitle}</span>
+              <span className="mt-1 text-sm text-white/70">{t.finishing.askText}</span>
+            </button>
+          </Reveal>
         </div>
       </div>
 

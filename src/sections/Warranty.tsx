@@ -25,11 +25,18 @@ export function Warranty() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <SmartImage
-            src={images.warranty}
-            alt={t.warranty.imageAlt}
-            className="mx-auto mt-12 h-48 w-full max-w-5xl rounded-sm object-cover md:h-64"
-          />
+          <div className="mx-auto mt-12 grid max-w-5xl grid-cols-[1.4fr_1fr] gap-3">
+            <SmartImage
+              src={images.warranty[0]}
+              alt={t.warranty.imageAlt}
+              className="h-44 w-full rounded-sm object-cover md:h-72"
+            />
+            <SmartImage
+              src={images.warranty[1]}
+              alt=""
+              className="h-44 w-full rounded-sm object-cover md:h-72"
+            />
+          </div>
         </Reveal>
 
         <div

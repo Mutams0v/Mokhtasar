@@ -142,6 +142,8 @@ const ar = {
     eyebrow: "وش نشطّب",
     title: "قائمة التشطيب",
     subtitle: "اضغط على أي بند للتفاصيل.",
+    askTitle: "بندك مو هنا؟",
+    askText: "قول لنا وش تحتاج، ونشوف لك الأنسب.",
     items: [
       { id: "cabinetry", title: "المطابخ والدواليب", details: ["مطابخ بارتفاع كامل", "دواليب غرف نوم", "خزائن مداخل وممرات"] },
       { id: "doors", title: "الأبواب", details: ["أبواب داخلية بكسوة لين السقف", "أبواب رئيسية", "أبواب حمامات مقاومة للرطوبة"] },
@@ -157,7 +159,7 @@ const ar = {
     ],
   },
   warranty: {
-    imageAlt: "أدوات قياس على سطح أبيض",
+    imageAlt: "فني يرفع المقاسات في الموقع",
     eyebrow: "الضمان",
     title: "اللي نركّبه، نضمنه",
     items: [
@@ -520,6 +522,8 @@ const en: Translation = {
     eyebrow: "What we fit out",
     title: "Fit-out list",
     subtitle: "Tap any item for details.",
+    askTitle: "Don't see your item?",
+    askText: "Tell us what you need and we'll find the right fit.",
     items: [
       { id: "cabinetry", title: "Kitchens and wardrobes", details: ["Full-height kitchens", "Bedroom wardrobes", "Entrance and corridor storage"] },
       { id: "doors", title: "Doors", details: ["Interior doors with ceiling-height panels", "Main doors", "Moisture-resistant bathroom doors"] },
@@ -535,7 +539,7 @@ const en: Translation = {
     ],
   },
   warranty: {
-    imageAlt: "Measuring tools on a white surface",
+    imageAlt: "A technician taking site measurements",
     eyebrow: "Warranty",
     title: "What we install, we stand behind",
     items: [
