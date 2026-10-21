@@ -2,6 +2,8 @@ import { Monitor, Plane } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { Reveal } from "../components/Reveal";
 import { scrollToId } from "../lib/scroll";
+import { SmartImage } from "../components/SmartImage";
+import { images } from "../data/images";
 
 const ICONS: Record<string, typeof Plane> = { visit: Plane, remote: Monitor };
 
@@ -21,7 +23,15 @@ export function Paths() {
             const Icon = ICONS[path.id] ?? Plane;
             return (
               <Reveal key={path.id} delay={i * 0.08}>
-                <article className="flex h-full flex-col border border-primary/10 bg-secondary-muted p-7 md:p-9">
+                <article className="flex h-full flex-col overflow-hidden border border-primary/10 bg-secondary-muted">
+                  {images.paths[path.id] && (
+                    <SmartImage
+                      src={images.paths[path.id]}
+                      alt={path.title}
+                      className="aspect-[16/9] w-full object-cover"
+                    />
+                  )}
+                  <div className="flex flex-1 flex-col p-7 md:p-9">
                   <Icon size={26} strokeWidth={1.5} className="text-accent" />
                   <h3 className="font-heading mt-5 text-2xl font-bold text-primary">{path.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-text-muted md:text-base">{path.description}</p>
@@ -53,6 +63,7 @@ export function Paths() {
                     >
                       {t.paths.choose}
                     </button>
+                  </div>
                   </div>
                 </article>
               </Reveal>

@@ -1,5 +1,7 @@
 import { useLanguage } from "../i18n/LanguageContext";
 import { Reveal } from "../components/Reveal";
+import { SmartImage } from "../components/SmartImage";
+import { images } from "../data/images";
 
 export function About() {
   const { t } = useLanguage();
@@ -23,6 +25,14 @@ export function About() {
             </div>
           </Reveal>
         </div>
+
+        <Reveal delay={0.12}>
+          <SmartImage
+            src={images.about}
+            alt={t.about.imageAlt}
+            className="mx-auto mt-12 aspect-[16/9] w-full max-w-4xl rounded-sm object-cover"
+          />
+        </Reveal>
 
         <Reveal delay={0.15}>
           <div className="mx-auto mt-12 grid max-w-2xl grid-cols-3 gap-6 border-t border-primary/10 pt-8">

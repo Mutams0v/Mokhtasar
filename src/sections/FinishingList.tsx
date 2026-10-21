@@ -15,6 +15,8 @@ import {
 import { useLanguage } from "../i18n/LanguageContext";
 import { Reveal } from "../components/Reveal";
 import { Modal } from "../components/ui/Modal";
+import { SmartImage } from "../components/SmartImage";
+import { images } from "../data/images";
 
 const ICONS: Record<string, typeof DoorOpen> = {
   cabinetry: ChefHat,
@@ -44,7 +46,20 @@ export function FinishingList() {
           <p className="mt-4 text-base text-text-muted">{t.finishing.subtitle}</p>
         </Reveal>
 
-        <div className="mx-auto mt-12 flex max-w-4xl flex-wrap justify-center gap-3">
+        <Reveal delay={0.08}>
+          <div className="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-2 sm:grid-cols-4">
+            {images.finishing.map((src, i) => (
+              <SmartImage
+                key={src}
+                src={src}
+                alt=""
+                className={`aspect-[3/4] w-full rounded-sm object-cover ${i > 1 ? "hidden sm:block" : ""}`}
+              />
+            ))}
+          </div>
+        </Reveal>
+
+        <div className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-3">
           {t.finishing.items.map((item) => {
             const Icon = ICONS[item.id] ?? DoorOpen;
             return (

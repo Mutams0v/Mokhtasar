@@ -2,6 +2,8 @@ import { PackageCheck, Ruler, SearchCheck, Wrench } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { Reveal } from "../components/Reveal";
 import { features } from "../data/site";
+import { SmartImage } from "../components/SmartImage";
+import { images } from "../data/images";
 
 const ICONS: Record<string, typeof Wrench> = {
   maintenance: Wrench,
@@ -22,8 +24,16 @@ export function Warranty() {
           <h2 className="font-heading mt-3 text-3xl font-bold text-primary md:text-4xl">{t.warranty.title}</h2>
         </Reveal>
 
+        <Reveal delay={0.08}>
+          <SmartImage
+            src={images.warranty}
+            alt={t.warranty.imageAlt}
+            className="mx-auto mt-12 h-48 w-full max-w-5xl rounded-sm object-cover md:h-64"
+          />
+        </Reveal>
+
         <div
-          className={`mx-auto mt-12 grid max-w-5xl gap-px overflow-hidden border border-primary/10 bg-primary/10 sm:grid-cols-2 ${
+          className={`mx-auto mt-6 grid max-w-5xl gap-px overflow-hidden border border-primary/10 bg-primary/10 sm:grid-cols-2 ${
             items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"
           }`}
         >

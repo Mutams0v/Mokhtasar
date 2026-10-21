@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { scrollToId } from "../lib/scroll";
+import { images } from "../data/images";
 
 export function Hero() {
   const { t, lang } = useLanguage();
@@ -11,14 +12,16 @@ export function Hero() {
   return (
     <section id="home" className="relative flex min-h-screen items-center overflow-hidden bg-primary">
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-soft to-primary" />
-        <svg className="absolute inset-0 h-full w-full opacity-[0.05]" preserveAspectRatio="none">
-          <pattern id="hero-grid" width="42" height="42" patternUnits="userSpaceOnUse">
-            <path d="M42 0 L0 0 0 42" fill="none" stroke="var(--color-accent)" strokeWidth="1" />
-          </pattern>
-          <rect width="100%" height="100%" fill="url(#hero-grid)" />
-        </svg>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,var(--color-primary)_85%)]" />
+        <img
+          src={images.hero}
+          alt=""
+          aria-hidden
+          fetchPriority="high"
+          decoding="async"
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-primary/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-transparent to-primary" />
       </div>
 
       <div className="container-x relative z-10 pt-24 text-center">
@@ -54,22 +57,6 @@ export function Hero() {
           </button>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="mx-auto mt-16 flex max-w-md items-center justify-center gap-10 border-t border-white/15 pt-8"
-        >
-          <div>
-            <p className="font-heading text-3xl font-bold text-accent">{t.hero.badgeYears}</p>
-            <p className="mt-1 text-xs tracking-wide text-white/60">{t.hero.badgeYearsLabel}</p>
-          </div>
-          <div className="h-10 w-px bg-white/15" />
-          <div>
-            <p className="font-heading text-3xl font-bold text-accent">{t.hero.badgeProjects}</p>
-            <p className="mt-1 text-xs tracking-wide text-white/60">{t.hero.badgeProjectsLabel}</p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

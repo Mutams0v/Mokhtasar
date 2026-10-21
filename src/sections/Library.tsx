@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { Reveal } from "../components/Reveal";
 import { Modal } from "../components/ui/Modal";
+import { SmartImage } from "../components/SmartImage";
+import { images } from "../data/images";
 
 export function Library() {
   const { t } = useLanguage();
@@ -24,6 +26,13 @@ export function Library() {
               onClick={() => setActiveId(item.id)}
               className="group flex flex-col items-start gap-2 border-b border-primary/10 py-7 text-start transition-colors sm:pe-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
             >
+              {images.library[item.id] && (
+                <SmartImage
+                  src={images.library[item.id]}
+                  alt=""
+                  className="mb-3 aspect-[4/3] w-full rounded-sm object-cover transition-opacity group-hover:opacity-90"
+                />
+              )}
               <span className="text-xs font-medium text-text-muted">{item.summary}</span>
               <span className="font-heading text-xl font-semibold text-primary transition-colors group-hover:text-accent-dark">
                 {item.title}

@@ -1,0 +1,24 @@
+Image credits — Mokhtasar website
+All images: Unsplash License (https://unsplash.com/license). Free for commercial use; attribution not required.
+Illustrative only. Not Mokhtasar projects.
+
+hero.webp | https://images.unsplash.com/photo-1780257562941-d9a6923befa1 | POOJAN THANEKAR
+about.webp | https://images.unsplash.com/photo-1704040686510-b747ff423ebb | Ariel Domenden
+why-china.webp | https://images.unsplash.com/photo-1687180498602-5a1046defaa4 | Albero Furniture Bratislava
+spec-windows.webp | https://images.unsplash.com/photo-1564327481459-8bcd5561cf86 | Lai Man Nung
+spec-doors.webp | https://images.unsplash.com/photo-1542354642-233af003db87 | Jorge Flores
+spec-kitchen.webp | https://images.unsplash.com/photo-1632583824020-937ae9564495 | Kam Idris
+spec-skylight.webp | https://images.unsplash.com/photo-1542676012084-a4b1f610452a | Kyle Brinker
+path-visit.webp | https://images.unsplash.com/photo-1786415264449-dbff6bf0c3d3 | MChe Lee
+path-remote.webp | https://images.unsplash.com/photo-1768144092684-c1a5dd6c7aad | POOJAN THANEKAR
+finish-kitchen.webp | https://images.unsplash.com/photo-1785535573676-5dafa00b3c8b | Unsplash
+finish-bath.webp | https://images.unsplash.com/photo-1771681278369-e2a5480b8c29 | Unsplash
+finish-lighting.webp | https://images.unsplash.com/photo-1515948725-edac7b5bb0fc | Unsplash
+finish-stairs.webp | https://images.unsplash.com/photo-1695624825974-96fa958f2be6 | Unsplash
+warranty.webp | https://images.unsplash.com/photo-1550985543-49bee3167284 | Unsplash
+lib-plywood.webp | https://images.unsplash.com/photo-1611600700192-d87eaeed4f81 | Pandav Tank
+lib-quartz.webp | https://images.unsplash.com/photo-1566041510394-cf7c8fe21800 | Unsplash
+lib-stainless.webp | https://images.unsplash.com/photo-1542855368-ca6ea825bca2 | Unsplash
+lib-thermal-break.webp | https://images.unsplash.com/photo-1569216961559-fd512349ebba | Richard Wang
+lib-glass.webp | https://images.unsplash.com/photo-1757924461488-ef9ad0670978 | Aalo Lens
+lib-wpc.webp | https://images.unsplash.com/photo-1603673298820-40d77252226d | Domingo Alvarez E

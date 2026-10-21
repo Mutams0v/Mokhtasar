@@ -103,7 +103,10 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-x flex flex-col items-center justify-between gap-3 py-5 text-center text-xs text-white/40 sm:flex-row">
-          <p>{t.footer.rights}</p>
+          <div className="space-y-1 sm:text-start">
+            <p>{t.footer.rights}</p>
+            <p className="text-white/30">{t.footer.imagesNote}</p>
+          </div>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
             {site.cr && (
               <span>

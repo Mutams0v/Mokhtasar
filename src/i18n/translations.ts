@@ -30,6 +30,7 @@ const ar = {
     badgeProjectsLabel: "مشروع منجز",
   },
   about: {
+    imageAlt: "صالة معيشة بتشطيب دافئ وإضاءة مخفية",
     eyebrow: "من نحن",
     title: "البيت يستاهل مواصفات أعلى من الشائع في السوق",
     description:
@@ -43,6 +44,7 @@ const ar = {
     ],
   },
   whyChina: {
+    imageAlt: "معرض أثاث بخيارات واسعة",
     eyebrow: "ليش الصين؟",
     title: "لأن الخيارات هناك أوسع، والمواصفة أعلى",
     points: [
@@ -155,6 +157,7 @@ const ar = {
     ],
   },
   warranty: {
+    imageAlt: "أدوات قياس على سطح أبيض",
     eyebrow: "الضمان",
     title: "اللي نركّبه، نضمنه",
     items: [
@@ -344,6 +347,7 @@ const ar = {
     vat: "الرقم الضريبي",
   },
   footer: {
+    imagesNote: "الصور المعروضة توضيحية من مكتبات صور مجانية، وليست من مشاريعنا.",
     tagline: "تشطيب بمواصفات أعلى في المنطقة الشرقية.",
     quickLinks: "روابط سريعة",
     contactInfo: "معلومات التواصل",
@@ -404,6 +408,7 @@ const en: Translation = {
     badgeProjectsLabel: "Completed projects",
   },
   about: {
+    imageAlt: "A living room with a warm finish and concealed lighting",
     eyebrow: "About us",
     title: "A home deserves a higher spec than the market norm",
     description:
@@ -417,6 +422,7 @@ const en: Translation = {
     ],
   },
   whyChina: {
+    imageAlt: "A furniture showroom with a wide range of options",
     eyebrow: "Why China?",
     title: "Because the choice is wider and the spec is higher",
     points: [
@@ -529,6 +535,7 @@ const en: Translation = {
     ],
   },
   warranty: {
+    imageAlt: "Measuring tools on a white surface",
     eyebrow: "Warranty",
     title: "What we install, we stand behind",
     items: [
@@ -718,6 +725,7 @@ const en: Translation = {
     vat: "VAT number",
   },
   footer: {
+    imagesNote: "Images shown are illustrative stock photos, not our projects.",
     tagline: "Fit-out to a higher spec in the Eastern Province.",
     quickLinks: "Quick links",
     contactInfo: "Contact",

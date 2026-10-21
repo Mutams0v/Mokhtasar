@@ -3,6 +3,8 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { AppWindow, ChefHat, DoorOpen, Sun } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { Reveal } from "../components/Reveal";
+import { SmartImage } from "../components/SmartImage";
+import { images } from "../data/images";
 
 const ICONS: Record<string, typeof DoorOpen> = {
   windows: AppWindow,
@@ -64,7 +66,18 @@ export function SpecCompare() {
             const Icon = ICONS[item.id] ?? DoorOpen;
             const lines = mode === "market" ? item.market : item.us;
             return (
-              <div key={item.id} className="min-h-[15rem] bg-primary p-7 md:p-9">
+              <div key={item.id} className="min-h-[15rem] bg-primary">
+                <div className="relative aspect-[16/9] overflow-hidden">
+                  <SmartImage
+                    src={images.specs[item.id] ?? images.hero}
+                    alt={item.title}
+                    className={`h-full w-full object-cover transition-[filter,opacity] duration-500 ${
+                      mode === "us" ? "opacity-100" : "opacity-60 grayscale"
+                    }`}
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent" />
+                </div>
+                <div className="px-7 pb-7 md:px-9 md:pb-9">
                 <div className="flex items-center gap-3">
                   <Icon size={22} strokeWidth={1.6} className={mode === "us" ? "text-accent" : "text-white/50"} />
                   <h3 className="font-heading text-xl font-semibold text-white">{item.title}</h3>
@@ -93,6 +106,7 @@ export function SpecCompare() {
                     ))}
                   </motion.ul>
                 </AnimatePresence>
+                </div>
               </div>
             );
           })}

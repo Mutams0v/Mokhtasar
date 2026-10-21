@@ -1,5 +1,7 @@
 import { useLanguage } from "../i18n/LanguageContext";
 import { Reveal } from "../components/Reveal";
+import { SmartImage } from "../components/SmartImage";
+import { images } from "../data/images";
 
 export function WhyChina() {
   const { t } = useLanguage();
@@ -13,6 +15,11 @@ export function WhyChina() {
             {t.whyChina.title}
           </h2>
           <div className="gold-line mt-6" />
+          <SmartImage
+            src={images.whyChina}
+            alt={t.whyChina.imageAlt}
+            className="mt-8 aspect-[4/3] w-full rounded-sm object-cover"
+          />
         </Reveal>
 
         <div className="divide-y divide-primary/10 border-y border-primary/10">
