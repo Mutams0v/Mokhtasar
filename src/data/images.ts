@@ -27,7 +27,7 @@ export const images = {
     doors: img("item-doors"),
     windows: img("item-windows"),
     skylight: img("item-skylight"),
-    flooring: img("item-flooring"),
+    flooring: img("gallery-flooring-1"),
     sanitary: img("item-sanitary"),
     electrical: img("item-electrical"),
     lighting: img("item-lighting"),
@@ -36,11 +36,15 @@ export const images = {
     furniture: img("item-furniture"),
   } as Record<string, string>,
   library: {
-    plywood: img("lib-plywood"),
-    quartz: img("lib-quartz"),
-    stainless: img("lib-stainless"),
-    "thermal-break": img("lib-thermal-break"),
-    glass: img("lib-glass"),
-    wpc: img("lib-wpc"),
+    kitchen: img("lib-plywood"),
+    windows: img("lib-glass"),
+    doors: img("lib-wpc"),
+    flooring: img("lib-flooring"),
+    sanitary: img("lib-stainless"),
+    lighting: img("lib-lighting"),
   } as Record<string, string>,
+  /** Extra photos shown inside an item's details window. */
+  finishingGallery: {
+    flooring: [img("item-flooring"), img("gallery-flooring-2"), img("gallery-flooring-3"), img("lib-flooring")],
+  } as Record<string, string[]>,
 };

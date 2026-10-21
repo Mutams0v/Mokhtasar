@@ -90,6 +90,13 @@ export function FinishingList() {
       </div>
 
       <Modal isOpen={!!activeItem} onClose={() => setActiveId(null)} title={activeItem?.title}>
+        {activeItem && images.finishingGallery[activeItem.id] && (
+          <div className="mb-5 grid grid-cols-2 gap-2">
+            {images.finishingGallery[activeItem.id].map((src) => (
+              <SmartImage key={src} src={src} alt="" className="aspect-[4/3] w-full rounded-sm object-cover" />
+            ))}
+          </div>
+        )}
         {activeItem && (
           <ul className="space-y-2.5">
             {activeItem.details.map((detail) => (
