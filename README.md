@@ -1,7 +1,7 @@
 # Mokhtasar | Fit-Out — Marketing Website
 
 A bilingual (Arabic/English) marketing site for Mokhtasar Fit-Out, a luxury
-residential interior fit-out company based in Dammam, Eastern Province,
+residential interior fit-out establishment (مؤسسة) based in Dammam, Eastern Province,
 Saudi Arabia.
 
 ## Stack

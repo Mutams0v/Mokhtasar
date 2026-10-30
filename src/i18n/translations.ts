@@ -34,7 +34,7 @@ const ar = {
     eyebrow: "من نحن",
     title: "مواصفات أعلى من المعتاد في السوق",
     description:
-      "مختصر شركة تشطيب سعودية في المنطقة الشرقية. ننقلك من محدودية الخيارات في السوق المحلي إلى خيارات مفتوحة من مصادرها الحقيقية، بجودة تناسب تطلعاتك. نعرف المصانع والمعارض في الصين معرفة مباشرة، ويتولى فنيونا رفع المقاسات والتركيب، فتتعامل مع جهة واحدة من البداية إلى التسليم.",
+      "مختصر مؤسسة تشطيب سعودية في المنطقة الشرقية. ننقلك من محدودية الخيارات في السوق المحلي إلى خيارات مفتوحة من مصادرها الحقيقية، بجودة تناسب تطلعاتك. نعرف المصانع والمعارض في الصين معرفة مباشرة، ويتولى فنيونا رفع المقاسات والتركيب، فتتعامل مع جهة واحدة من البداية إلى التسليم.",
     goalLabel: "هدفنا",
     goalText: "أن تكون مرحلة التشطيب واضحة لك، وتعرف ماذا تختار ولماذا.",
     stats: [
@@ -430,7 +430,7 @@ const en: Translation = {
     eyebrow: "About us",
     title: "A home deserves a higher spec than the market norm",
     description:
-      "Mokhtasar is a Saudi fit-out company in the Eastern Province. We take you beyond the limited choice of the local market to an open range of options from their original sources, at a quality that matches your expectations. We know the factories and showrooms in China first-hand, and our own technicians measure and install, so you deal with one party from start to handover.",
+      "Mokhtasar is a Saudi fit-out establishment in the Eastern Province. We take you beyond the limited choice of the local market to an open range of options from their original sources, at a quality that matches your expectations. We know the factories and showrooms in China first-hand, and our own technicians measure and install, so you deal with one party from start to handover.",
     goalLabel: "Our goal",
     goalText: "Building a home should be clear and enjoyable, with you understanding what you're buying and why.",
     stats: [
