@@ -365,7 +365,6 @@ const ar = {
     vat: "الرقم الضريبي",
   },
   footer: {
-    imagesNote: "الصور المعروضة توضيحية من مكتبات صور مجانية، وليست من مشاريعنا.",
     tagline: "تشطيب بمواصفات أعلى في المنطقة الشرقية.",
     quickLinks: "روابط سريعة",
     contactInfo: "التواصل",
@@ -731,7 +730,6 @@ const en: Translation = {
     vat: "VAT number",
   },
   footer: {
-    imagesNote: "Images shown are illustrative stock photos, not our projects.",
     tagline: "Fit-out to a higher spec in the Eastern Province.",
     quickLinks: "Quick links",
     contactInfo: "Contact",
