@@ -291,8 +291,8 @@ export function Measure() {
             </li>
             <li className="flex items-center gap-3">
               <Phone size={18} className="shrink-0 text-accent" />
-              <a href={`tel:+${site.whatsapp}`} className="hover:text-primary" dir="ltr">
-                {site.phoneDisplay}
+              <a href={`tel:+${site.call}`} className="hover:text-primary" dir="ltr">
+                {site.callDisplay}
               </a>
             </li>
             <li className="flex items-center gap-3">

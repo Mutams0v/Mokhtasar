@@ -1,6 +1,8 @@
 export const site = {
   whatsapp: "966580355595",
   phoneDisplay: "+966 58 035 5595",
+  call: "966505828304",
+  callDisplay: "+966 50 582 8304",
   email: "MokhtasarFitOut@gmail.com",
   instagram: "",
   tiktok: "",

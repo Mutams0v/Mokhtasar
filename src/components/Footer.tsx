@@ -78,8 +78,8 @@ export function Footer() {
           <ul className="space-y-3 text-sm text-white/60">
             <li className="flex items-start gap-2.5">
               <Phone size={16} className="mt-0.5 shrink-0 text-accent" />
-              <a href={`tel:+${site.whatsapp}`} className="transition-colors hover:text-white" dir="ltr">
-                {site.phoneDisplay}
+              <a href={`tel:+${site.call}`} className="transition-colors hover:text-white" dir="ltr">
+                {site.callDisplay}
               </a>
             </li>
             <li className="flex items-start gap-2.5">
